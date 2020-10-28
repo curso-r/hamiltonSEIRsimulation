@@ -10,7 +10,8 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # List the first level UI elements here 
     fluidPage(
-      h1("hamiltonSeirsimulation")
+      #mod_original_ui("original_ui_1")
+      mod_top_ui_ui("top_ui_ui_1")
     )
   )
 }
@@ -29,6 +30,10 @@ golem_add_external_resources <- function(){
     'www', app_sys('app/www')
   )
  
+  add_resource_path(
+  "www", system.file("app/www", package = "hamiltonCovid19")
+  )
+  
   tags$head(
     favicon(),
     bundle_resources(
@@ -37,6 +42,15 @@ golem_add_external_resources <- function(){
     )
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert() 
+  )
+  
+  tags$head(
+    favicon(),
+    bundle_resources(
+      path = system.file("app/www", package = "hamiltonCovid19"),
+      app_title = 'hamiltonSeirsimulation'
+    )
+    
   )
 }
 

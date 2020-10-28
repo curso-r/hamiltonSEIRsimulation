@@ -1,0 +1,1 @@
+utils::globalVariables(c("V2", "Susceptible", "Exposed", "Infectious", "Recovered"))
