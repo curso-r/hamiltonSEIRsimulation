@@ -22,3 +22,5 @@ LazyData: true
 RoxygenNote: 7.1.1
 Remotes: 
     curso-r/hamiltonCovid19
+URL: https://github.com/curso-r/hamiltonSeirsimulation
+BugReports: https://github.com/curso-r/hamiltonSeirsimulation/issues
