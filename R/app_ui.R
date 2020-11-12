@@ -31,7 +31,7 @@ golem_add_external_resources <- function(){
   )
  
   add_resource_path(
-  "www", system.file("app/www", package = "hamiltonCovid19")
+    "distill", system.file("distill", package = "hamiltonThemes")
   )
   
   tags$head(
@@ -47,7 +47,7 @@ golem_add_external_resources <- function(){
   tags$head(
     favicon(),
     bundle_resources(
-      path = system.file("app/www", package = "hamiltonCovid19"),
+      path = system.file("distill", package = "hamiltonThemes"),
       app_title = 'hamiltonSeirsimulation'
     )
     

@@ -10,12 +10,11 @@
 mod_original_ui <- function(id){
   ns <- NS(id)
   tagList(
- 
     bs4Dash::bs4DashPage(
       sidebar_collapsed = TRUE,
       sidebar_mini = FALSE,
       body = bs4Dash::bs4DashBody(
-        fresh::use_theme(hamiltonCovid19::theme_bs4Dash()),
+        hamiltonThemes::use_bs4Dash_distill_theme(),
         fluidRow(
           bs4Dash::column(
             width = 4,
@@ -87,13 +86,13 @@ mod_original_ui <- function(id){
               width = 12,
               bs4Dash::bs4TabPanel(
                 tabName = "Spread",
-                plotOutput(ns("plot")) %>% hamiltonCovid19::with_load_spinner(),
+                plotOutput(ns("plot")) %>% hamiltonThemes::distill_load_spinner(),
                 radioButtons(ns("yscale"), "Y axis scale:",
                              choices = list("Linear" = "linear","Log10" = "log"), inline=TRUE)
               ),
               bs4Dash::bs4TabPanel(
                 tabName = "Days to epidemic's end",
-                plotOutput(ns("plot2")) %>% hamiltonCovid19::with_load_spinner(),
+                plotOutput(ns("plot2")) %>% hamiltonThemes::distill_load_spinner(),
                 uiOutput(ns("Report"))    
               ),
               bs4Dash::bs4TabPanel(
