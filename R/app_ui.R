@@ -45,7 +45,7 @@ golem_add_external_resources <- function(){
   )
   
   tags$head(
-    favicon(),
+    favicon(ext = "png"),
     bundle_resources(
       path = system.file("distill", package = "hamiltonThemes"),
       app_title = 'hamiltonSeirsimulation'
