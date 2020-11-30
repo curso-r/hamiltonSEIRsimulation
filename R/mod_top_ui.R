@@ -114,10 +114,10 @@ mod_top_ui_ui <- function(id){
                 div(style = "color: black;", get_about_text())
               )
             )
-          ),
-          hamiltonThemes:::bs4dash_distill_footer()
+          )
         )
-      )
+      ),
+      footer = hamiltonThemes:::bs4dash_distill_footer()
     )
   )
   
