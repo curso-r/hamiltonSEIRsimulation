@@ -225,6 +225,7 @@ mod_top_ui_server <- function(input, output, session){
     
     
     plt1 <- ggplot2::ggplot(final, ggplot2::aes(Time)) +
+      ggplot2::theme_bw() + 
       ggplot2::geom_ribbon(ggplot2::aes(ymin = quantilesS.lower, ymax = quantilesS.upper), alpha = 0.3, fill = "black") +
       ggplot2::geom_ribbon(ggplot2::aes(ymin = quantilesE.lower, ymax = quantilesE.upper), alpha = 0.3, fill = "purple") +
       ggplot2::geom_ribbon(ggplot2::aes(ymin = quantilesI.lower, ymax = quantilesI.upper), alpha = 0.3, fill = "red") +
@@ -235,19 +236,20 @@ mod_top_ui_server <- function(input, output, session){
       ggplot2::geom_line(ggplot2::aes(y = Infectious, color = "C_red")) +     # I
       ggplot2::geom_line(ggplot2::aes(y = Recovered, color = "D_blue")) +     # R
       
-      ggplot2::labs(x = "time [day]", y = "Number of people", colour = "") +
+      ggplot2::labs(x = "Day", y = "Number of people", colour = "") +
       ggplot2::scale_colour_manual(
-        name = "Comp.",
+        name = "Compartment",
         values = c(A_black = "black", B_purple = "purple", C_red = "red", D_blue = "blue"),
-        labels = c("S", "E", "I", "R")
+        labels = c("Susceptible", "Exposed", "Infectious", "Removed")
       ) +
       ggplot2::scale_x_continuous(expand = c(0, 0)) +
-      ggplot2::scale_y_continuous(expand = c(0, 0), labels = scientific_10) + 
-      ggplot2::theme(legend.position = c(0.9, 0.5), plot.title = ggplot2::element_text(size = 10, face = "bold"))
+      ggplot2::scale_y_continuous(expand = c(0, 0), labels = scales::comma)
+      #ggplot2::theme(legend.position = c(0.9, 0.5), plot.title = ggplot2::element_text(size = 10, face = "bold"))
     
     plt2 = plt1 + 
-      ggplot2::scale_y_log10(limits = c(1E-2, NA), breaks = scales::trans_breaks("log10", function(x) 10^x), labels = scales::trans_format("log10", scales::math_format())) +
-      ggplot2::labs(x = "time [day]", y = "Number of people (logscale)", colour = "") +
+      #ggplot2::scale_y_log10(limits = c(1E-2, NA), breaks = scales::trans_breaks("log10", function(x) 10^x), labels = scales::trans_format("log10", scales::math_format())) +
+      ggplot2::scale_y_log10(labels = scales::comma) + 
+      ggplot2::labs(x = "Day", y = "Number of people (log scale)", colour = "") +
       ggplot2::theme(legend.position = "none")
     
     if(input$yscale == "linear"){
